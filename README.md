@@ -1,3 +1,3 @@
-# production-ready-api-starter-typescript-nestjs-postgressql
+# production-ready-starter-typescript-stenciljs-storybook-angular-nestjs-postgressql
 
-production ready api starter with typescript nestjs (incl. typeorm, eslint, jest, supertest, dotenv, logging, monitoring, swagger-openapi) postgressql
+production ready starter with typescript stenciljs storybook angular nestjs (incl. typeorm, eslint, jest, supertest, dotenv, logging, monitoring, swagger-openapi) postgressql

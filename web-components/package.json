@@ -22,12 +22,22 @@
     "start": "stencil build --dev --watch --serve",
     "test": "stencil test --spec --e2e",
     "test.watch": "stencil test --spec --e2e --watchAll",
-    "generate": "stencil generate"
+    "generate": "stencil generate",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "dependencies": {
     "@stencil/core": "2.0.3"
   },
   "devDependencies": {
-    "@stencil/angular-output-target": "0.0.5"
+    "@stencil/angular-output-target": "0.0.5",
+    "@babel/core": "7.11.6",
+    "@storybook/addon-actions": "6.0.22",
+    "@storybook/addon-essentials": "6.0.22",
+    "@storybook/addon-links": "6.0.22",
+    "@storybook/cli": "6.0.22",
+    "@storybook/html": "6.0.22",
+    "babel-loader": "8.1.0",
+    "react-is": "16.13.1"
   }
 }

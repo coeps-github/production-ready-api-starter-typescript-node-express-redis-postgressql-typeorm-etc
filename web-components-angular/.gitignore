@@ -11,6 +11,9 @@
 **/directives/angular-component-lib/*
 **/directives/proxies.ts
 
+# Storybook generated output
+documentation.json
+
 # dependencies
 /node_modules
 

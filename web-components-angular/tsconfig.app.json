@@ -9,8 +9,7 @@
     "src/polyfills.ts"
   ],
   "include": [
-    "src/**/*.d.ts",
-    "../web-components-angular/src/**/*"
+    "src/**/*.d.ts"
   ],
   "exclude": [
     "**/*.stories.*"

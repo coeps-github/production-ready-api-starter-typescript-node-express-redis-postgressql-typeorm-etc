@@ -7,6 +7,9 @@
 # Only exists if Bazel was run
 /bazel-out
 
+# Storybook generated output
+documentation.json
+
 # dependencies
 /node_modules
 

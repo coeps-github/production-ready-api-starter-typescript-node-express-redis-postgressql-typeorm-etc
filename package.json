@@ -2,21 +2,22 @@
   "name": "production-ready-starter-typescript-stenciljs-storybook-angular-nestjs-postgressql",
   "version": "0.0.1",
   "description": "production ready starter with typescript stenciljs storybook angular nestjs (incl. typeorm, eslint, jest, supertest, dotenv, logging, monitoring, swagger-openapi) postgressql",
-  "main": "index.js",
-  "scripts": {
-    "web-components:js-storybook": "concurrently \"cd web-components && npm run build.watch\" \"cd web-components-js-storybook && npm run storybook\""
-  },
+  "author": "coeps",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/coeps-github/production-ready-starter-typescript-stenciljs-storybook-angular-nestjs-postgressql.git"
   },
-  "author": "coeps",
-  "license": "MIT",
   "bugs": {
     "url": "https://github.com/coeps-github/production-ready-starter-typescript-stenciljs-storybook-angular-nestjs-postgressql/issues"
   },
   "homepage": "https://github.com/coeps-github/production-ready-starter-typescript-stenciljs-storybook-angular-nestjs-postgressql#readme",
+  "scripts": {
+    "web-components:js-storybook": "concurrently \"cd web-components && npm run build.watch\" \"cd web-components-js-storybook && npm run storybook\""
+  },
+  "dependencies": {},
   "devDependencies": {
+    "@angular/cli": "10.1.4",
     "@storybook/cli": "6.0.22",
     "concurrently": "5.3.0"
   }

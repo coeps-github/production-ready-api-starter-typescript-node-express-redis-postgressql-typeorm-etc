@@ -1,0 +1,13 @@
+{
+  "name": "web-components-js-storybook",
+  "version": "0.0.1",
+  "description": "",
+  "author": "coeps",
+  "license": "MIT",
+  "scripts": {},
+  "dependencies": {
+    "@angular/core": "10.1.4",
+    "web-components": "file:../web-components"
+  },
+  "devDependencies": {}
+}

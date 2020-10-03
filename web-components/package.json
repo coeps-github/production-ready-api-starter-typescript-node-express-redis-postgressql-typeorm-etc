@@ -1,7 +1,9 @@
 {
   "name": "web-components",
   "version": "0.0.1",
-  "description": "Stencil Component Starter",
+  "description": "",
+  "author": "coeps",
+  "license": "MIT",
   "main": "dist/index.cjs.js",
   "module": "dist/custom-elements/index.js",
   "es2015": "dist/esm/index.mjs",
@@ -9,7 +11,7 @@
   "types": "dist/custom-elements/index.d.ts",
   "collection": "dist/collection/collection-manifest.json",
   "collection:main": "dist/collection/index.js",
-  "unpkg": "dist/web-components/web-components.js",
+  "unpkg": "dist/web-components/web-components.esm.js",
   "files": [
     "dist/",
     "loader/"
@@ -25,5 +27,7 @@
   "dependencies": {
     "@stencil/core": "2.0.3"
   },
-  "license": "MIT"
+  "devDependencies": {
+    "@stencil/angular-output-target": "0.0.5"
+  }
 }

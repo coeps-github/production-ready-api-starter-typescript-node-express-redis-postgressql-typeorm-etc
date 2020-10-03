@@ -3,6 +3,6 @@ export const parameters = {
     actions: {argTypesRegex: "^on[A-Z].*"},
 }
 
-import {defineCustomElements} from '../../web-components/dist/esm/loader';
+import {defineCustomElements} from 'web-components/loader';
 
 defineCustomElements();

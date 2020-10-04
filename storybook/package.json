@@ -1,0 +1,22 @@
+{
+  "name": "storybook",
+  "version": "0.0.1",
+  "description": "",
+  "author": "coeps",
+  "license": "MIT",
+  "scripts": {
+    "storybook": "start-storybook -p 8000 --ci --quiet",
+    "build-storybook": "build-storybook"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@babel/core": "7.11.6",
+    "@storybook/addon-actions": "6.0.22",
+    "@storybook/addon-essentials": "6.0.22",
+    "@storybook/addon-links": "6.0.22",
+    "@storybook/cli": "6.0.22",
+    "@storybook/html": "6.0.22",
+    "babel-loader": "8.1.0",
+    "react-is": "16.13.1"
+  }
+}

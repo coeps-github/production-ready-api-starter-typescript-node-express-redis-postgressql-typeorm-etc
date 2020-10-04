@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "docs:json": "compodoc -p ./tsconfig.json -e json -d .",
-    "storybook": "npm run docs:json && start-storybook -p 6006",
+    "storybook": "npm run docs:json && start-storybook -p 8002 --ci --quiet",
     "build-storybook": "npm run docs:json && build-storybook"
   },
   "dependencies": {

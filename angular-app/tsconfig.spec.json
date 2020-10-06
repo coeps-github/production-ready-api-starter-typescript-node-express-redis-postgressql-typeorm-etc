@@ -15,5 +15,8 @@
     "src/**/*.spec.ts",
     "src/**/*.d.ts",
     "../web-components-angular/src/**/*"
+  ],
+  "exclude": [
+    "**/*.stories.*"
   ]
 }

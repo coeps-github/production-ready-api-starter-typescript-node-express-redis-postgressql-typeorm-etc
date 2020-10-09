@@ -1,7 +1,7 @@
 {
-  "name": "production-ready-starter-typescript-stenciljs-storybook-angular-nestjs-postgressql",
+  "name": "production-ready-starter-typescript-stenciljs-storybook-angular-nestjs-redis-postgressql",
   "version": "0.0.1",
-  "description": "production ready starter with typescript stenciljs storybook angular nestjs (incl. typeorm, eslint, jest, supertest, dotenv, logging, monitoring, swagger-openapi) postgressql",
+  "description": "production ready starter with typescript stenciljs storybook angular nestjs (incl. sequelize, ws, eslint, jest, supertest, dotenv, logging, monitoring, swagger-openapi) redis postgressql",
   "author": "coeps",
   "license": "MIT",
   "repository": {

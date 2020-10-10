@@ -9,7 +9,7 @@ export class AppController {
     private readonly logger: TransientLoggerService
   ) {
     this.logger.setContext('lalalalaasdfasdfasdfasdfasdf');
-    this.logger.error('erröööör');
+    this.logger.error('erröööör', 'asdf');
   }
 
   @Get()

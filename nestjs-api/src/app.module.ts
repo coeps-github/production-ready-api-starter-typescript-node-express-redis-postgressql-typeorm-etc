@@ -1,18 +1,21 @@
-import { Logger, Module } from '@nestjs/common';
+import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TransientLoggerModule } from './logging/transient-logger.module';
+import { TerminusModule } from '@nestjs/terminus';
+import { HealthController } from './health/health.controller';
 
 @Module({
   imports: [
-    TransientLoggerModule
+    TransientLoggerModule,
+    TerminusModule
   ],
   controllers: [
-    AppController
+    AppController,
+    HealthController
   ],
   providers: [
-    AppService,
-    Logger
+    AppService
   ]
 })
 export class AppModule {

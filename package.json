@@ -13,6 +13,7 @@
   },
   "homepage": "https://github.com/coeps-github/production-ready-starter-typescript-stenciljs-storybook-angular-nestjs-postgressql#readme",
   "scripts": {
+    "npm:install": "cd web-components && npm install && cd .. && cd web-components-angular && npm install && cd .. && cd angular-app && npm install && cd .. && cd storybook && npm install && cd .. && cd nestjs-api && npm install",
     "storybook": "concurrently \"cd web-components && npm run build.watch\" \"cd web-components && npm run storybook\" \"cd web-components-angular && npm run storybook\" \"cd angular-app && npm run storybook\" \"cd storybook && npm run storybook\"",
     "web-components-storybook": "concurrently \"cd web-components && npm run build.watch\" \"cd web-components && npm run storybook\"",
     "web-components-angular-storybook": "concurrently \"cd web-components && npm run build.watch\" \"cd web-components-angular && npm run storybook\"",

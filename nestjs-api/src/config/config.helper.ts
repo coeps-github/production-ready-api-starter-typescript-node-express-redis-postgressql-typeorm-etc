@@ -10,3 +10,7 @@ export function removePropertiesFromObject(properties: string[], obj: Record<str
     }
   }, {});
 }
+
+export function parseBoolean(str: string): boolean {
+  return str === 'true';
+}

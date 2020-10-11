@@ -1,8 +1,7 @@
-// TODO: Add SSL, JWT, WS, DATABASE etc. configs
-
 import { Config } from './config.model';
-import { parseBoolean, removePropertiesFromObject } from './config.helper';
+import { parseBoolean } from './config.helper';
 
+// TODO: Add SSL, JWT, WS, DATABASE etc. configs
 export function configFactory(): Config {
   return {
     logger: {
@@ -10,9 +9,10 @@ export function configFactory(): Config {
       logLevel: process.env.LOG_LEVEL || 'info',
       logDir: process.env.LOG_DIR || 'logs',
       timestampFormat: { format: process.env.TIMESTAMP_FORMAT || 'YYYY-MM-DD HH:mm:ss.SSS' },
-      printfTemplateFn: (log) => `${log.timestamp} ${log.level} [${log.context}] ${log.message} - ${
-        JSON.stringify(removePropertiesFromObject(['timestamp', 'level', 'context', 'message'], log))
-      }`
+      printfTemplateFn: (log) => {
+        const { timestamp, level, context, message, ...others } = log;
+        return `${log.timestamp} ${log.level} [${log.context}] ${log.message} - ${JSON.stringify(others)}`;
+      }
     },
     app: {
       name: process.env.npm_package_name,

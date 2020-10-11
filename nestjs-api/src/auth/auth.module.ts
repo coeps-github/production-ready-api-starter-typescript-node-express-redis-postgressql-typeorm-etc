@@ -8,6 +8,7 @@ import { JwtStrategy } from './strategies/jwt.strategy';
 import { LocalStrategy } from './strategies/local.strategy';
 import { AuthController } from './auth.controller';
 import { TransientLoggerModule } from '../logging/transient-logger.module';
+import { AuthGateway } from './auth.gateway';
 
 @Module({
   imports: [
@@ -35,7 +36,8 @@ import { TransientLoggerModule } from '../logging/transient-logger.module';
   providers: [
     AuthService,
     LocalStrategy,
-    JwtStrategy
+    JwtStrategy,
+    AuthGateway
   ],
   exports: [
     AuthService

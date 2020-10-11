@@ -2,11 +2,18 @@ import { SubscribeMessage, WebSocketGateway, WebSocketServer, WsResponse } from 
 import { from, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Server } from 'ws';
+import { TransientLoggerService } from '../logging/transient-logger.service';
 
 @WebSocketGateway()
 export class EventGateway {
   @WebSocketServer()
   server: Server;
+
+  constructor(
+    private readonly logger: TransientLoggerService
+  ) {
+    this.logger.setContext(EventGateway.name);
+  }
 
   @SubscribeMessage('events')
   onEvent(client: any, data: any): Observable<WsResponse<number>> {

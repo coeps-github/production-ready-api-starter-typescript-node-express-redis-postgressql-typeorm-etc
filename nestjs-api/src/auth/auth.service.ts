@@ -18,8 +18,8 @@ export class AuthService {
   //   thus never storing or exposing user passwords in plain text.
   //   To keep our sample app simple, we violate that absolute mandate and use plain text.
   //   Don't do this in your real app!
-  async validateUser(username: string, pass: string): Promise<any> {
-    const user = await this.usersService.findOne(username);
+  async validateUsernameAndPassword(username: string, pass: string): Promise<any> {
+    const user = await this.usersService.findUsername(username);
     if (user && user.password === pass) {
       const { password, ...result } = user;
       return result;
@@ -27,8 +27,17 @@ export class AuthService {
     return null;
   }
 
+  async validateUserIdAndUsername(userId: string, username: string): Promise<any> {
+    const user = await this.usersService.findUserId(userId);
+    if (user && user.username === username) {
+      const { password, ...result } = user;
+      return result;
+    }
+    return null;
+  }
+
   async login(user: any) {
-    const payload = { username: user.username, sub: user.userId };
+    const payload = { userId: user.userId, username: user.username };
     return {
       access_token: this.jwtService.sign(payload)
     };

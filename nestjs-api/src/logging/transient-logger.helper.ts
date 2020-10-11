@@ -102,7 +102,7 @@ export function sanitizeRequest(req: FilterRequest, propName: string) {
         .join('; ');
     }
   }
-  if (propName === 'body') {
+  if (req.body && propName === 'body') {
     if (req.body.password) {
       req.body.password = '[REDACTED]';
     }

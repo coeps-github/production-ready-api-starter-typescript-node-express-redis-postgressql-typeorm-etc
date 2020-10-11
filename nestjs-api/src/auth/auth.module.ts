@@ -19,7 +19,8 @@ import { AuthGateway } from './auth.gateway';
       secret: jwtConstants.secret,
       signOptions: { expiresIn: '60s' }
     })
-    // JwtModule.registerAsync({
+    // TODO: Add secret from config
+    //   JwtModule.registerAsync({
     //   imports: [ConfigModule],
     //   useFactory: async (configService: ConfigService) => ({
     //     secretOrPrivateKey: configService.getString('SECRET_KEY'),

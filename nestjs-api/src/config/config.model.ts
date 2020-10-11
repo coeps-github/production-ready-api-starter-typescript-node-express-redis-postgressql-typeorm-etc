@@ -23,4 +23,9 @@ export interface AppConfig {
 export interface ServerConfig {
   port: number;
   wsPort: number;
+  rateLimit: {
+    windowMs: number;
+    maxRequestsPerIpDuringWindow: number
+    trustProxyClientIpHeader: boolean
+  }
 }

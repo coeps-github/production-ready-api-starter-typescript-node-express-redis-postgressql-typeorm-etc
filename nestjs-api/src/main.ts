@@ -35,6 +35,8 @@ async function bootstrap() {
     //httpsOptions: {},
   });
 
+  app.use(logger.expressWinstonLogger);
+
   app.enableShutdownHooks();
 
   app.use(helmet());

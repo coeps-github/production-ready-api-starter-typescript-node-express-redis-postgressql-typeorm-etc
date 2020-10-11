@@ -55,15 +55,17 @@ async function bootstrap() {
     app.set('trust proxy', 1);
   }
 
+  app.setGlobalPrefix('api');
+
+  app.useWebSocketAdapter(new WsAdapter(app));
+
   const options = new DocumentBuilder()
     .setTitle(appConfig.name)
     .setDescription(`The ${appConfig.name} API description`)
     .setVersion(appConfig.version)
     .build();
   const document = SwaggerModule.createDocument(app, options);
-  SwaggerModule.setup('openapi', app, document);
-
-  app.useWebSocketAdapter(new WsAdapter(app));
+  SwaggerModule.setup('api', app, document);
 
   await app.listen(serverConfig.port);
 

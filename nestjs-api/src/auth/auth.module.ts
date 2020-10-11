@@ -6,9 +6,12 @@ import { AuthService } from './auth.service';
 import { jwtConstants } from './constants';
 import { JwtStrategy } from './strategies/jwt.strategy';
 import { LocalStrategy } from './strategies/local.strategy';
+import { AuthController } from './auth.controller';
+import { TransientLoggerModule } from '../logging/transient-logger.module';
 
 @Module({
   imports: [
+    TransientLoggerModule,
     UsersModule,
     PassportModule,
     JwtModule.register({
@@ -26,8 +29,17 @@ import { LocalStrategy } from './strategies/local.strategy';
     //   inject: [ConfigService]
     // })
   ],
-  providers: [AuthService, LocalStrategy, JwtStrategy],
-  exports: [AuthService]
+  controllers: [
+    AuthController
+  ],
+  providers: [
+    AuthService,
+    LocalStrategy,
+    JwtStrategy
+  ],
+  exports: [
+    AuthService
+  ]
 })
 export class AuthModule {
 }

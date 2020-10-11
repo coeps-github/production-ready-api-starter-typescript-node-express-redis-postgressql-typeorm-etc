@@ -2,8 +2,6 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TransientLoggerModule } from '../logging/transient-logger.module';
-import { TerminusModule } from '@nestjs/terminus';
-import { HealthController } from '../health/health.controller';
 import { ConfigModule } from '@nestjs/config';
 import { configFactory } from '../config/config.factory';
 import { ServeStaticModule } from '@nestjs/serve-static';
@@ -11,6 +9,7 @@ import { join } from 'path';
 import { AuthModule } from '../auth/auth.module';
 import { UsersModule } from '../users/users.module';
 import { EventModule } from '../event/event.module';
+import { HealthModule } from '../health/health.module';
 
 @Module({
   imports: [
@@ -22,15 +21,14 @@ import { EventModule } from '../event/event.module';
     AuthModule,
     UsersModule,
     EventModule,
-    TerminusModule,
+    HealthModule,
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, '..', 'www'),
-      exclude: ['/api*', '/health*']
+      exclude: ['/api*']
     })
   ],
   controllers: [
-    AppController,
-    HealthController
+    AppController
   ],
   providers: [
     AppService

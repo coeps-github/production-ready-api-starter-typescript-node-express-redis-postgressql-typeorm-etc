@@ -7,6 +7,7 @@ import {
   MemoryHealthIndicator
 } from '@nestjs/terminus';
 import * as os from 'os';
+import { TransientLoggerService } from '../logging/transient-logger.service';
 
 @Controller('health')
 export class HealthController {
@@ -14,8 +15,10 @@ export class HealthController {
     private readonly health: HealthCheckService,
     private readonly memory: MemoryHealthIndicator,
     private readonly disk: DiskHealthIndicator,
-    private readonly dns: DNSHealthIndicator
+    private readonly dns: DNSHealthIndicator,
+    private readonly logger: TransientLoggerService
   ) {
+    this.logger.setContext(HealthController.name);
   }
 
   @Get()

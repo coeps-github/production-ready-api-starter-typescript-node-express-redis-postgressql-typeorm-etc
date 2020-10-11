@@ -1,8 +1,8 @@
 import { Controller, Get } from '@nestjs/common';
 import { AppService } from './app.service';
-import { TransientLoggerService } from './logging/transient-logger.service';
+import { TransientLoggerService } from '../logging/transient-logger.service';
 
-@Controller()
+@Controller('/api')
 export class AppController {
   constructor(
     private readonly appService: AppService,

@@ -1,5 +1,5 @@
 import { NestFactory } from '@nestjs/core';
-import { AppModule } from './app.module';
+import { AppModule } from './app/app.module';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { TransientLoggerService } from './logging/transient-logger.service';
 import { ConfigService } from '@nestjs/config';
@@ -24,10 +24,10 @@ async function bootstrap() {
   // TODO: Add other configs for logging
 
   const app = await NestFactory.create(AppModule, {
+    logger,
     // TODO: Add security stuff
+    cors: true
     //httpsOptions: {},
-    cors: true,
-    logger
   });
 
   app.enableShutdownHooks();

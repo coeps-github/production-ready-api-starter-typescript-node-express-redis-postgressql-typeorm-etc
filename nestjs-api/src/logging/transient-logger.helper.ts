@@ -1,28 +1,34 @@
 import { Logger } from 'winston';
 import * as expressWinston from 'express-winston';
-import { FilterRequest } from 'express-winston';
+import { FilterRequest, FilterResponse } from 'express-winston';
 
 export function createExpressWinstonHandler(logger: Logger) {
   return expressWinston.logger({
     winstonInstance: logger,
     meta: true,
     metaField: 'express',
-    baseMeta: { context: 'HTTP' },
-    msg: '{{req.method}} {{res.statusCode}} {{req.url}}',
+    baseMeta: { context: 'Express' },
     statusLevels: true,
-    expressFormat: false,
-    requestFilter: sanitizeHeaders,
+    expressFormat: true,
     headerBlacklist: ['cookie'],
+    requestWhitelist: ['headers', 'body'],
+    responseWhitelist: ['headers', 'body'],
+    requestFilter: sanitizeRequest,
+    responseFilter: sanitizeResponse,
     ignoreRoute: () => false
   });
 }
 
-export function sanitizeHeaders(req: FilterRequest, propName: string) {
+export function sanitizeRequest(req: FilterRequest, propName: string) {
   if (propName === 'headers') {
     // The 'if-none-match' header can break logstash JSON format
-    if ('if-none-match' in req.headers) req.headers['if-none-match'] = 'EXCLUDED';
+    if ('if-none-match' in req.headers) {
+      req.headers['if-none-match'] = 'EXCLUDED';
+    }
     // The 'authorization' header has the plaintext jwt token, we should never log it
-    if (req.headers.authorization) req.headers.authorization = 'Bearer [REDACTED]';
+    if (req.headers.authorization) {
+      req.headers.authorization = 'Bearer [REDACTED]';
+    }
     // The 'cookie' header could contain jwt tokens
     if (req.headers.cookie) {
       const cookies = req.headers.cookie.split('; ');
@@ -42,5 +48,20 @@ export function sanitizeHeaders(req: FilterRequest, propName: string) {
         .join('; ');
     }
   }
+  if (propName === 'body') {
+    if (req.body.password) {
+      req.body.password = '[REDACTED]';
+    }
+  }
   return (req as any)[propName];
 }
+
+export function sanitizeResponse(res: FilterResponse, propName: string) {
+  if (propName === 'body') {
+    if (res.body.access_token) {
+      res.body.access_token = '[REDACTED]';
+    }
+  }
+  return (res as any)[propName];
+}
+

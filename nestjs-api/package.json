@@ -27,9 +27,11 @@
     "@nestjs/jwt": "7.1.0",
     "@nestjs/passport": "7.1.0",
     "@nestjs/platform-express": "7.4.4",
+    "@nestjs/platform-ws": "7.4.4",
     "@nestjs/serve-static": "2.1.3",
     "@nestjs/swagger": "4.6.1",
     "@nestjs/terminus": "7.0.1",
+    "@nestjs/websockets": "7.4.4",
     "cookie-parser": "1.4.5",
     "csurf": "1.11.0",
     "express-rate-limit": "5.1.3",
@@ -43,7 +45,8 @@
     "rimraf": "3.0.2",
     "rxjs": "6.6.3",
     "swagger-ui-express": "4.1.4",
-    "winston": "3.3.3"
+    "winston": "3.3.3",
+    "ws": "7.3.1"
   },
   "devDependencies": {
     "@nestjs/cli": "7.5.1",
@@ -55,6 +58,7 @@
     "@types/passport-jwt": "3.0.3",
     "@types/passport-local": "1.0.33",
     "@types/supertest": "2.0.10",
+    "@types/ws": "7.2.7",
     "@typescript-eslint/eslint-plugin": "3.10.1",
     "@typescript-eslint/parser": "3.10.1",
     "eslint": "7.10.0",

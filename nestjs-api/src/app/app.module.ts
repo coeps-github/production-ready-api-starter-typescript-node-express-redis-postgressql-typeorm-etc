@@ -10,6 +10,7 @@ import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
 import { AuthModule } from '../auth/auth.module';
 import { UsersModule } from '../users/users.module';
+import { EventModule } from '../event/event.module';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { UsersModule } from '../users/users.module';
     TransientLoggerModule,
     AuthModule,
     UsersModule,
+    EventModule,
     TerminusModule,
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, '..', 'www'),

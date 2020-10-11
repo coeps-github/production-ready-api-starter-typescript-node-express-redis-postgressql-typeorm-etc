@@ -74,7 +74,7 @@ export function createExpressWinstonHandler(logger: Logger) {
 }
 
 export function sanitizeRequest(req: FilterRequest, propName: string) {
-  if (propName === 'headers') {
+  if (req.headers && propName === 'headers') {
     // The 'if-none-match' header can break logstash JSON format
     if ('if-none-match' in req.headers) {
       req.headers['if-none-match'] = 'EXCLUDED';
@@ -111,7 +111,7 @@ export function sanitizeRequest(req: FilterRequest, propName: string) {
 }
 
 export function sanitizeResponse(res: FilterResponse, propName: string) {
-  if (propName === 'body') {
+  if (res.body && propName === 'body') {
     if (res.body.access_token) {
       res.body.access_token = '[REDACTED]';
     }

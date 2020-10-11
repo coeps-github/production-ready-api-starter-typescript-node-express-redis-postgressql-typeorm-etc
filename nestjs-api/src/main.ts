@@ -10,6 +10,7 @@ import * as cookieParser from 'cookie-parser';
 import * as csurf from 'csurf';
 import * as rateLimit from 'express-rate-limit';
 import { NestExpressApplication } from '@nestjs/platform-express';
+import { WsAdapter } from '@nestjs/platform-ws';
 
 declare const module: any;
 
@@ -35,11 +36,13 @@ async function bootstrap() {
     //httpsOptions: {},
   });
 
-  app.use(logger.expressWinstonLogger);
-
   app.enableShutdownHooks();
 
-  app.use(helmet());
+  app.use(logger.expressWinstonLogger);
+
+  app.use(helmet({
+    contentSecurityPolicy: serverConfig.contentSecurityPolicy
+  }));
   app.use(cookieParser());
   if (serverConfig.csrfEnabled) {
     app.use(csurf({ cookie: { key: 'XSRF-TOKEN' } }));
@@ -59,6 +62,8 @@ async function bootstrap() {
     .build();
   const document = SwaggerModule.createDocument(app, options);
   SwaggerModule.setup('openapi', app, document);
+
+  app.useWebSocketAdapter(new WsAdapter(app));
 
   await app.listen(serverConfig.port);
 

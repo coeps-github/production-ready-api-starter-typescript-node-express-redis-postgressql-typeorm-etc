@@ -22,8 +22,8 @@ export interface AppConfig {
 
 export interface ServerConfig {
   readonly port: number;
-  readonly wsPort: number;
-  readonly csrfEnabled: boolean;
+  readonly contentSecurityPolicy: boolean;
+  readonly csrf: boolean;
   readonly rateLimit: {
     readonly windowMs: number;
     readonly maxRequestsPerIpDuringWindow: number

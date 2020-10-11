@@ -6,7 +6,7 @@ import { ConfigService } from '@nestjs/config';
 
 @Injectable({ scope: Scope.TRANSIENT })
 export class TransientLoggerService extends WinstonLogger {
-  constructor(private configService: ConfigService<Config>) {
+  constructor(private readonly configService: ConfigService<Config>) {
     super(winston.createLogger({
       level: configService.get('logger').logLevel as string,
       levels: winston.config.npm.levels,

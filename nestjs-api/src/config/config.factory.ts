@@ -21,10 +21,11 @@ export function configFactory(): Config {
     server: {
       port: +process.env.PORT || 8080,
       wsPort: +process.env.WS_PORT || 8081,
+      csrfEnabled: parseBoolean(process.env.CSRF_ENABLED, true),
       rateLimit: {
         windowMs: +process.env.RATE_LIMIT_WINDOW_MS || 60 * 1000,
         maxRequestsPerIpDuringWindow: +process.env.RATE_LIMIT_MAX_REQUESTS_PER_IP_DURING_WINDOW || 60,
-        trustProxyClientIpHeader: parseBoolean(process.env.RATE_LIMIT_TRUST_PROXY_CLIENT_IP_HEADER) || true
+        trustProxyClientIpHeader: parseBoolean(process.env.RATE_LIMIT_TRUST_PROXY_CLIENT_IP_HEADER, true)
       }
     }
     // jwt: {

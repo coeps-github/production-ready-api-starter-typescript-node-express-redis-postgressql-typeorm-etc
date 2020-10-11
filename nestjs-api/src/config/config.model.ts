@@ -16,16 +16,17 @@ export interface LoggerConfig {
 }
 
 export interface AppConfig {
-  name: string;
-  version: string;
+  readonly name: string;
+  readonly version: string;
 }
 
 export interface ServerConfig {
-  port: number;
-  wsPort: number;
-  rateLimit: {
-    windowMs: number;
-    maxRequestsPerIpDuringWindow: number
-    trustProxyClientIpHeader: boolean
+  readonly port: number;
+  readonly wsPort: number;
+  readonly csrfEnabled: boolean;
+  readonly rateLimit: {
+    readonly windowMs: number;
+    readonly maxRequestsPerIpDuringWindow: number
+    readonly trustProxyClientIpHeader: boolean
   }
 }

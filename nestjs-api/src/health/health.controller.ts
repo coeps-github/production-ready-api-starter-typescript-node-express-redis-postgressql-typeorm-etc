@@ -11,10 +11,10 @@ import * as os from 'os';
 @Controller('health')
 export class HealthController {
   constructor(
-    private health: HealthCheckService,
-    private memory: MemoryHealthIndicator,
-    private disk: DiskHealthIndicator,
-    private dns: DNSHealthIndicator
+    private readonly health: HealthCheckService,
+    private readonly memory: MemoryHealthIndicator,
+    private readonly disk: DiskHealthIndicator,
+    private readonly dns: DNSHealthIndicator
   ) {
   }
 

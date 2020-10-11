@@ -39,7 +39,9 @@ async function bootstrap() {
 
   app.use(helmet());
   app.use(cookieParser());
-  app.use(csurf({ cookie: { key: 'XSRF-TOKEN' } }));
+  if (serverConfig.csrfEnabled) {
+    app.use(csurf({ cookie: { key: 'XSRF-TOKEN' } }));
+  }
   app.use(rateLimit({
     windowMs: serverConfig.rateLimit.windowMs,
     max: serverConfig.rateLimit.maxRequestsPerIpDuringWindow
@@ -57,6 +59,8 @@ async function bootstrap() {
   SwaggerModule.setup('openapi', app, document);
 
   await app.listen(serverConfig.port);
+
+  logger.log(`Application is running on: ${await app.getUrl()}`);
 
   if (module.hot) {
     module.hot.accept();

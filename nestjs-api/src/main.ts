@@ -44,7 +44,7 @@ async function bootstrap() {
     contentSecurityPolicy: serverConfig.contentSecurityPolicy
   }));
   app.use(cookieParser());
-  if (serverConfig.csrfEnabled) {
+  if (serverConfig.csrf) {
     app.use(csurf({ cookie: { key: 'XSRF-TOKEN' } }));
   }
   app.use(rateLimit({

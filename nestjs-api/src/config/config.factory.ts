@@ -21,7 +21,7 @@ export function configFactory(): Config {
     server: {
       port: +process.env.PORT || 8080,
       contentSecurityPolicy: parseBoolean(process.env.CONTENT_SECURITY_POLICY, true),
-      csrf: parseBoolean(process.env.CSRF_ENABLED, true),
+      csrf: parseBoolean(process.env.CSRF, true),
       rateLimit: {
         windowMs: +process.env.RATE_LIMIT_WINDOW_MS || 60 * 1000,
         maxRequestsPerIpDuringWindow: +process.env.RATE_LIMIT_MAX_REQUESTS_PER_IP_DURING_WINDOW || 60,

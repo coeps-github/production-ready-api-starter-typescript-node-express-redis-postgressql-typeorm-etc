@@ -15,6 +15,16 @@ import { LocalStrategy } from './strategies/local.strategy';
       secret: jwtConstants.secret,
       signOptions: { expiresIn: '60s' }
     })
+    // JwtModule.registerAsync({
+    //   imports: [ConfigModule],
+    //   useFactory: async (configService: ConfigService) => ({
+    //     secretOrPrivateKey: configService.getString('SECRET_KEY'),
+    //     signOptions: {
+    //       expiresIn: 60s
+    //     }
+    //   }),
+    //   inject: [ConfigService]
+    // })
   ],
   providers: [AuthService, LocalStrategy, JwtStrategy],
   exports: [AuthService]

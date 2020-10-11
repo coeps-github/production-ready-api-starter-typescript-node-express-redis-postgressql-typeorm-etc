@@ -14,7 +14,7 @@ export class WsJwtAuthGuard implements CanActivate {
   async canActivate(context: ExecutionContext): Promise<boolean> {
     const data = context.switchToWs().getData();
     const jwtPayload = this.jwtService.verify(data.access_token);
-    const user = await this.authService.validateUserIdAndUsername(jwtPayload.userId, jwtPayload.username);
+    const user = await this.authService.validateIdAndUsername(jwtPayload.id, jwtPayload.username);
     if (!user) {
       throw new WsException('Unauthorized');
     }

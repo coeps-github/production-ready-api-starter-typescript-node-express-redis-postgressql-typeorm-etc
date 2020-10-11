@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { UsersService } from '../users/users.service';
 import { JwtService } from '@nestjs/jwt';
+import { User } from '../users/user.model';
 
 @Injectable()
 export class AuthService {
@@ -19,7 +20,7 @@ export class AuthService {
   //   To keep our sample app simple, we violate that absolute mandate and use plain text.
   //   Don't do this in your real app!
   async validateUsernameAndPassword(username: string, pass: string): Promise<any> {
-    const user = await this.usersService.findUsername(username);
+    const user = await this.usersService.findOneUsername(username);
     if (user && user.password === pass) {
       const { password, ...result } = user;
       return result;
@@ -27,8 +28,8 @@ export class AuthService {
     return null;
   }
 
-  async validateUserIdAndUsername(userId: string, username: string): Promise<any> {
-    const user = await this.usersService.findUserId(userId);
+  async validateIdAndUsername(id: string, username: string): Promise<any> {
+    const user = await this.usersService.findOneId(id);
     if (user && user.username === username) {
       const { password, ...result } = user;
       return result;
@@ -36,8 +37,8 @@ export class AuthService {
     return null;
   }
 
-  async login(user: any) {
-    const payload = { userId: user.userId, username: user.username };
+  async login(user: User) {
+    const payload = { id: user.id, username: user.username };
     return {
       access_token: this.jwtService.sign(payload)
     };

@@ -1,10 +1,13 @@
 import { NpmConfigSetLevels } from 'winston/lib/winston/config';
 import * as winston from 'winston';
+import { TransientLoggerService } from '../logging/transient-logger.service';
 
 export interface Config {
-  logger: LoggerConfig;
-  app: AppConfig;
-  server: ServerConfig;
+  readonly logger: LoggerConfig;
+  readonly app: AppConfig;
+  readonly server: ServerConfig;
+  readonly jwt: JwtConfig;
+  readonly db: DbConfig;
 }
 
 export interface LoggerConfig {
@@ -29,4 +32,26 @@ export interface ServerConfig {
     readonly maxRequestsPerIpDuringWindow: number
     readonly trustProxyClientIpHeader: boolean
   }
+}
+
+export interface JwtConfig {
+  readonly secret: string;
+  readonly publicKey: string;
+  readonly privateKey: string;
+  readonly signOptions: {
+    readonly expiresIn: string;
+  }
+}
+
+export interface DbConfig {
+  readonly dialect: string;
+  readonly host: string;
+  readonly port: number;
+  readonly username: string;
+  readonly password: string;
+  readonly database: string;
+  readonly dialectOptions: Record<string, unknown>;
+  readonly autoLoadModels: boolean;
+  readonly synchronize: boolean;
+  readonly loggingFn: (logger: TransientLoggerService, log: Record<string, unknown>) => string;
 }

@@ -15,8 +15,8 @@ socket.onopen = async function () {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      username: 'chris',
-      password: 'secret'
+      username: 'john.marston',
+      password: 'password'
     })
   });
   const loginPayload = await loginResponse.json();
